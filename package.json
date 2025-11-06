@@ -1,6 +1,6 @@
 {
   "name": "@umituz/react-native-theme",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Theme management system for React Native apps - Colors, design tokens, and theme state management",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
