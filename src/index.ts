@@ -22,6 +22,25 @@ export {
 } from './core/ColorPalette';
 
 // =============================================================================
+// BASE TOKENS - Static Design Tokens
+// =============================================================================
+
+export {
+  BASE_TOKENS,
+  STATIC_TOKENS,
+  spacing,
+  typography,
+  borders,
+  type Spacing,
+  type Typography,
+  type Borders,
+  type BaseTokens,
+  type IconSizes,
+  type Opacity,
+  type AvatarSizes,
+} from './core/BaseTokens';
+
+// =============================================================================
 // TOKEN FACTORY
 // =============================================================================
 
