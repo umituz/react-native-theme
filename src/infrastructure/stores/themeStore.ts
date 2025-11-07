@@ -22,7 +22,7 @@ interface ThemeState {
   isDark: boolean;
   isInitialized: boolean;
   setThemeMode: (mode: ThemeMode) => Promise<void>;
-  toggleTheme: () => void;
+  toggleTheme: () => Promise<void>;
   initialize: () => Promise<void>;
 }
 
@@ -90,12 +90,13 @@ export const useTheme = create<ThemeState>((set, get) => ({
     }
   },
 
-  toggleTheme: () => {
+  toggleTheme: async () => {
     const { themeMode, setThemeMode } = get();
     const newMode: ThemeMode = themeMode === 'light' ? 'dark' : 'light';
-    setThemeMode(newMode);
+    await setThemeMode(newMode);
   },
 }));
+
 
 
 
