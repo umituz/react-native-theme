@@ -1,11 +1,11 @@
 /**
- * @umituz/react-native-theme - Public API
+ * @umituz/react-native-design-system-theme - Public API
  *
  * Theme management system for React Native apps
  * Provides colors, design tokens, and theme state management
  *
  * Usage:
- *   import { useAppDesignTokens, useDesignSystemTheme, lightColors, darkColors } from '@umituz/react-native-theme';
+ *   import { useAppDesignTokens, useDesignSystemTheme, lightColors, darkColors } from '@umituz/react-native-design-system-theme';
  */
 
 // =============================================================================

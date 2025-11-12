@@ -31,7 +31,7 @@ interface ThemeState {
  *
  * Usage:
  * ```typescript
- * import { useTheme } from '@umituz/react-native-theme';
+ * import { useTheme } from '@umituz/react-native-design-system-theme';
  *
  * const MyComponent = () => {
  *   const { theme, themeMode, setThemeMode, toggleTheme } = useTheme();

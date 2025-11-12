@@ -1,11 +1,11 @@
-# @umituz/react-native-theme
+# @umituz/react-native-design-system-theme
 
 Theme management system for React Native apps - Colors, design tokens, and theme state management.
 
 ## Installation
 
 ```bash
-npm install @umituz/react-native-theme
+npm install @umituz/react-native-design-system-theme
 ```
 
 ## Peer Dependencies
@@ -20,7 +20,7 @@ npm install @umituz/react-native-theme
 ### Basic Usage
 
 ```typescript
-import { useAppDesignTokens, useDesignSystemTheme } from '@umituz/react-native-theme';
+import { useAppDesignTokens, useDesignSystemTheme } from '@umituz/react-native-design-system-theme';
 
 const MyComponent = () => {
   const tokens = useAppDesignTokens();
@@ -40,7 +40,7 @@ const MyComponent = () => {
 ### Syncing with App Theme
 
 ```typescript
-import { useDesignSystemTheme } from '@umituz/react-native-theme';
+import { useDesignSystemTheme } from '@umituz/react-native-design-system-theme';
 import { useTheme } from '@domains/theme';
 
 // Sync app theme with design system

@@ -8,7 +8,7 @@
  *
  * @example Usage (fully automatic theme-aware)
  * ```typescript
- * import { useAppDesignTokens } from '@umituz/react-native-theme';
+ * import { useAppDesignTokens } from '@umituz/react-native-design-system-theme';
  *
  * const MyComponent = () => {
  *   const tokens = useAppDesignTokens(); // Automatically uses current theme!

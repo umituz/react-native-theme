@@ -1,5 +1,5 @@
 {
-  "name": "@umituz/react-native-theme",
+  "name": "@umituz/react-native-design-system-theme",
   "version": "1.2.5",
   "description": "Theme management system for React Native apps - Colors, design tokens, and theme state management",
   "main": "./src/index.ts",
@@ -27,7 +27,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/umituz/react-native-theme"
+    "url": "https://github.com/umituz/react-native-design-system-theme"
   },
   "peerDependencies": {
     "@react-native-async-storage/async-storage": "^1.21.0",

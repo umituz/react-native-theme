@@ -12,7 +12,7 @@
  *
  * USAGE IN APP:
  * ```typescript
- * import { useDesignSystemTheme } from '@umituz/react-native-theme';
+ * import { useDesignSystemTheme } from '@umituz/react-native-design-system-theme';
  * import { useTheme } from '@domains/theme';
  *
  * // Sync app theme with design system
