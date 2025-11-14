@@ -33,17 +33,38 @@
 import { useMemo } from 'react';
 import { createDesignTokens, type DesignTokens } from '../core/TokenFactory';
 import { useDesignSystemTheme } from '../infrastructure/globalThemeStore';
+import { isValidDesignTokens, getValidThemeMode } from '../core/utils/tokenValidator';
+
+/**
+ * Creates design tokens with fallback handling
+ * 
+ * @param mode - Theme mode
+ * @returns Design tokens or fallback tokens
+ */
+const createTokensWithFallback = (mode: string | undefined | null): DesignTokens => {
+  const validMode = getValidThemeMode(mode);
+  
+  try {
+    const tokens = createDesignTokens(validMode);
+    
+    if (!isValidDesignTokens(tokens)) {
+      /* eslint-disable-next-line no-console */
+      if (__DEV__) console.warn('[useAppDesignTokens] Invalid tokens returned, using fallback');
+      return createDesignTokens('light');
+    }
+    
+    return tokens;
+  } catch (error) {
+    /* eslint-disable-next-line no-console */
+    if (__DEV__) console.error('[useAppDesignTokens] Error creating tokens:', error);
+    return createDesignTokens('light');
+  }
+};
 
 export const useAppDesignTokens = (): DesignTokens => {
   const { themeMode } = useDesignSystemTheme();
   
-  // Safety check: Return default tokens if themeMode is not ready
-  return useMemo(() => {
-    if (!themeMode) {
-      // Return default light theme tokens if themeMode is not initialized
-      return createDesignTokens('light');
-    }
-    return createDesignTokens(themeMode);
-  }, [themeMode]);
+  // Memoized tokens creation with validation (DRY + KISS)
+  return useMemo(() => createTokensWithFallback(themeMode), [themeMode]);
 };
 

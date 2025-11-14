@@ -11,6 +11,7 @@
 
 import { BASE_TOKENS } from './BaseTokens';
 import { getColorPalette, withAlpha, type ThemeMode, type ColorPalette } from './ColorPalette';
+import { createThemedBorders } from './utils/borderFactory';
 
 // =============================================================================
 // DESIGN TOKENS TYPE
@@ -70,18 +71,8 @@ export const createDesignTokens = (mode: ThemeMode): DesignTokens => {
     opacity: BASE_TOKENS.opacity,
     avatarSizes: BASE_TOKENS.avatarSizes,
 
-    // ✅ BORDERS: Static + injected border colors from theme
-    borders: {
-      ...BASE_TOKENS.borders,
-      card: {
-        ...BASE_TOKENS.borders.card,
-        borderColor: colors.border,
-      },
-      input: {
-        ...BASE_TOKENS.borders.input,
-        borderColor: colors.border,
-      },
-    },
+    // ✅ BORDERS: Static + injected border colors from theme (DRY)
+    borders: createThemedBorders(BASE_TOKENS.borders, colors.border),
   };
 };
 
