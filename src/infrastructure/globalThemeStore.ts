@@ -42,9 +42,15 @@ interface GlobalThemeStore {
  * This is a MINIMAL store - app has the real theme logic.
  * Design system just mirrors the current theme for its components.
  */
-export const useDesignSystemTheme = create<GlobalThemeStore>((set) => ({
+export const useDesignSystemTheme = create<GlobalThemeStore>((set, get) => ({
   themeMode: 'light',
-  setThemeMode: (mode: ThemeMode) => set({ themeMode: mode }),
+  setThemeMode: (mode: ThemeMode) => {
+    // Only update if mode actually changed to prevent unnecessary re-renders
+    const currentMode = get().themeMode;
+    if (currentMode !== mode) {
+      set({ themeMode: mode });
+    }
+  },
 }));
 
 // Re-export ThemeMode for backward compatibility
