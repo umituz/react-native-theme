@@ -61,10 +61,29 @@ const createTokensWithFallback = (mode: string | undefined | null): DesignTokens
   }
 };
 
+// Fallback tokens - created once to avoid recreation
+const FALLBACK_TOKENS = createDesignTokens('light');
+
 export const useAppDesignTokens = (): DesignTokens => {
   const { themeMode } = useDesignSystemTheme();
   
   // Memoized tokens creation with validation (DRY + KISS)
-  return useMemo(() => createTokensWithFallback(themeMode), [themeMode]);
+  // Always returns valid tokens - never undefined
+  return useMemo(() => {
+    try {
+      const tokens = createTokensWithFallback(themeMode);
+      // Double-check: ensure tokens are valid before returning
+      if (isValidDesignTokens(tokens)) {
+        return tokens;
+      }
+      /* eslint-disable-next-line no-console */
+      if (__DEV__) console.warn('[useAppDesignTokens] Invalid tokens, using fallback');
+      return FALLBACK_TOKENS;
+    } catch (error) {
+      /* eslint-disable-next-line no-console */
+      if (__DEV__) console.error('[useAppDesignTokens] Error in useMemo:', error);
+      return FALLBACK_TOKENS;
+    }
+  }, [themeMode]);
 };
 
