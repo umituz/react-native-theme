@@ -36,6 +36,14 @@ import { useDesignSystemTheme } from '../infrastructure/globalThemeStore';
 
 export const useAppDesignTokens = (): DesignTokens => {
   const { themeMode } = useDesignSystemTheme();
-  return useMemo(() => createDesignTokens(themeMode), [themeMode]);
+  
+  // Safety check: Return default tokens if themeMode is not ready
+  return useMemo(() => {
+    if (!themeMode) {
+      // Return default light theme tokens if themeMode is not initialized
+      return createDesignTokens('light');
+    }
+    return createDesignTokens(themeMode);
+  }, [themeMode]);
 };
 
